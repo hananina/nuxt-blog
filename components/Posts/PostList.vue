@@ -2,7 +2,7 @@
   <section class="post-list">
     <PostPreview
       v-for="post in posts"
-      key="post.id"
+      :key="post.id"
       :id="post.id"
       :is-admin="isAdmin"
       :thumbnail="post.url"

@@ -1,14 +1,14 @@
 <template>
   <div class="single-post-page">
     <section class="post">
-      <h1 class="post-title">{{ loadedPost.title }}</h1>
+      <h1 class="post-title">{{ loadedPosts.title }}</h1>
       <div class="post-details">
         <div class="post-detail">
-          Last updated on {{ loadedPost.updatedDate }}
+          Last updated on {{ loadedPosts.updatedDate }}
         </div>
-        <div class="post-detail">Written by {{ loadedPost.author }}</div>
+        <div class="post-detail">Written by {{ loadedPosts.author }}</div>
       </div>
-      <p class="post-content">{{ loadedPost.content }}</p>
+      <p class="post-content">{{ loadedPosts.content }}</p>
     </section>
     <!-- <section class="post-feedback">
       <p>
@@ -25,7 +25,7 @@ export default {
   asyncData(context, callback) {
     setTimeout(() => {
       callback(null, {
-        loadedPost: {
+        loadedPosts: {
           id: "1",
           title: "First post! (ID: " + context.params.id + ")",
           previewText: "preview......",

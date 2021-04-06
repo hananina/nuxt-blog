@@ -2,7 +2,7 @@
   <div>
     <h1>Posts pages</h1>
     <div class="posts-page">
-      <PostList :posts="loadedPost" :isAdmin="false" />
+      <PostList :posts="loadedPosts" :isAdmin="false" />
     </div>
   </div>
 </template>
@@ -16,8 +16,8 @@ export default {
   },
   asyncData(context, callback) {
     setTimeout(() => {
-      callback(new Error(), {
-        loadedPost: [
+      callback(null, {
+        loadedPosts: [
           {
             id: "1",
             title: "First post!",
@@ -47,6 +47,9 @@ export default {
         default: false
       }
     };
+  },
+  created() {
+    this.$store.dispatch("setPosts", this.loadedPosts);
   }
 };
 </script>

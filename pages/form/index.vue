@@ -9,14 +9,12 @@
     </ul>
     <input v-model.number="budget" /> 円以下に絞り込む
     <input v-model.number="limit" /> 件を表示
-    <button :click="(sortedByAsc = !sortedByAsc)">
-      {{ sortedByAsc ? "降順↓へ切り替え" : "昇順↑に切り替え" }}
-    </button>
+    <button @click="sortedByAsc = !sortedByAsc">切り替え</button>
     <p>
       {{ matchedBudgetItems.length }} 件中、 {{ limitedItems.length }} 件を表示
     </p>
     <ul>
-      <li v-for="item in filteredList" :key="item.id">
+      <li v-for="item in limitedItems" :key="item.id">
         {{ item.name }} {{ item.price }} 円
       </li>
     </ul>
@@ -44,25 +42,25 @@ export default {
   computed: {
     matchedBudgetItems: function() {
       return this.list.filter(item => {
-        item.price <= this.budget;
+        return item.price < this.budget;
       }, this);
     },
     sortedItems: function() {
       return _.orderBy(
         this.matchedBudgetItems,
         "price",
-        this.sortedByAsc ? "asc" : "desc"
+        this.sortedByAsc ? "desc" : "asc"
       );
     },
     limitedItems: function() {
       return this.sortedItems.slice(0, this.limit);
-    },
-
-    filteredList: function() {
-      return this.limitedItems;
     }
   },
-  methods: {}
+  methods: {
+    click() {
+      this.sortedByAsc = !this.sortedByAsc;
+    }
+  }
 };
 </script>
 

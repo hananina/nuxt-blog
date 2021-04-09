@@ -46,7 +46,7 @@ export default {
         return item.price < this.budget;
       }, this);
     },
-    sortedItems: function() {
+    sortedItems() {
       return _.orderBy(
         this.matchedBudgetItems,
         "price",
@@ -72,17 +72,15 @@ export default {
       immediate: true //初期読み込みでも呼び出す
     }
   },
-  created: function() {
-    console.log("created のwatchだよ");
+  created() {
     this.$watch(
       () => {
         //処理
-        console.log("created のwatchだよ");
         return [this.budget, this.limit];
       },
       () => {
         //budget limitが変化したよ
-        console.log("created のwatch　budget limitが変化したよ");
+        console.log("created のwatch | budget limitが変化したよ");
       }
     );
   }

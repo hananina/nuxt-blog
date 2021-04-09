@@ -39,11 +39,9 @@ export default {
             q: "topic:" + val
           }
         })
-        .then(
-          function(response) {
-            this.list = response.data.items;
-          }.bind(this)
-        );
+        .then(response => {
+          this.list = response.data.items;
+        });
     }
   }
 };

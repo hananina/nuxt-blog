@@ -2,7 +2,13 @@
   <div class="form-page">
     <h1>FORM</h1>
     <form action=""></form>
-    <input type="text" v-focus />
+    <button @click="video1 = true"></button>
+    <button @click="video1 = false"></button>
+    <video v-video="video1"></video>
+
+    <button @click="video2 = true"></button>
+    <button @click="video2 = false"></button>
+    <video v-video="video2"></video>
   </div>
 </template>
 
@@ -10,27 +16,15 @@
 import _ from "lodash";
 
 export default {
+  data() {
+    return {
+      video1: false,
+      video2: false
+    };
+  },
   directives: {
-    focus: {
-      //紐付いている要素がDOMに挿入されるとき
-      inserted: el => {
-        el.focus(); //要素にfocusを当てる
-      },
-      bind: el => {
-        console.log("bind");
-      },
-      inserted: el => {
-        console.log("inserted");
-      },
-      update: el => {
-        console.log("update");
-      },
-      componentUpdated: el => {
-        console.log("component");
-      },
-      unbind: el => {
-        console.log("unbind");
-      }
+    video(el, binding) {
+      binding.value ? el.play() : el.pause();
     }
   }
 };

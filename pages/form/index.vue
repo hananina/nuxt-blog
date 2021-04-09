@@ -9,6 +9,7 @@
     </ul>
     <input v-model.number="budget" /> 円以下に絞り込む
     <input v-model.number="limit" /> 件を表示
+    <button @click="update">更新</button>
     <button @click="sortedByAsc = !sortedByAsc">切り替え</button>
     <p>
       {{ matchedBudgetItems.length }} 件中、 {{ limitedItems.length }} 件を表示
@@ -57,10 +58,21 @@ export default {
     }
   },
   methods: {
-    click() {
-      this.sortedByAsc = !this.sortedByAsc;
+    update() {
+      this.list[0].name = "Updatedりんご";
     }
-  }
+  },
+  watch: {
+    list: {
+      handler: function(newVal, oldVal) {
+        // listが変化したときに行いたい処理
+        console.log("piiiiii updated");
+      },
+      deep: true, //ネストされたオブジェクトも監視する
+      immediate: true //初期読み込みでも呼び出す
+    }
+  },
+  creaded: function() {}
 };
 </script>
 

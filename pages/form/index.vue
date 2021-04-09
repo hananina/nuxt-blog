@@ -72,7 +72,20 @@ export default {
       immediate: true //初期読み込みでも呼び出す
     }
   },
-  creaded: function() {}
+  created: function() {
+    console.log("created のwatchだよ");
+    this.$watch(
+      () => {
+        //処理
+        console.log("created のwatchだよ");
+        return [this.budget, this.limit];
+      },
+      () => {
+        //budget limitが変化したよ
+        console.log("created のwatch　budget limitが変化したよ");
+      }
+    );
+  }
 };
 </script>
 

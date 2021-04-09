@@ -15,6 +15,21 @@ export default {
       //紐付いている要素がDOMに挿入されるとき
       inserted: el => {
         el.focus(); //要素にfocusを当てる
+      },
+      bind: el => {
+        console.log("bind");
+      },
+      inserted: el => {
+        console.log("inserted");
+      },
+      update: el => {
+        console.log("update");
+      },
+      componentUpdated: el => {
+        console.log("component");
+      },
+      unbind: el => {
+        console.log("unbind");
       }
     }
   }

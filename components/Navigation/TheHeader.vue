@@ -7,6 +7,7 @@
       </div>
       <div class="spacer"></div>
       <div class="navigation-items">
+        <button @click="handleClick">fire this event</button>
         <ul class="nav-list">
           <li class="nav-item"><nuxt-link to="/form">Form</nuxt-link></li>
           <li class="nav-item"><nuxt-link to="/posts">Blog</nuxt-link></li>
@@ -25,6 +26,11 @@ export default {
   name: "TheHeader",
   components: {
     TheSideNavToggle
+  },
+  methods: {
+    handleClick: function() {
+      this.$emit("child-event");
+    }
   }
 };
 </script>

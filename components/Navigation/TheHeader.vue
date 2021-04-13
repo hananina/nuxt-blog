@@ -9,6 +9,7 @@
       <div class="navigation-items">
         <button @click="handleClick">fire this event</button>
         <ul class="nav-list">
+          <li class="nav-item"><nuxt-link to="/weather">Weather</nuxt-link></li>
           <li class="nav-item"><nuxt-link to="/form">Form</nuxt-link></li>
           <li class="nav-item"><nuxt-link to="/posts">Blog</nuxt-link></li>
           <li class="nav-item"><nuxt-link to="/about">About</nuxt-link></li>

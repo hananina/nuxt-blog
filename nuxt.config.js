@@ -42,7 +42,9 @@ module.exports = {
   modules: [
     "@nuxtjs/axios",
   ],
-
+  axios: {
+    baseURL: 'https://api.openweathermap.org/data/2.5/weather', 
+  },
   /*
   ** Build configuration
   */
